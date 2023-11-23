@@ -1,4 +1,4 @@
-import 'package:aisummarizer/summarizerScreen.dart'
+import 'package:aisummarizer/summarizerScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
