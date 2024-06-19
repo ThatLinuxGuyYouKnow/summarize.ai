@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ReusableButton extends StatelessWidget {
   final String label;
-  ReusableButton({super.key, required this.label});
+  final VoidCallback onPressed;
+  ReusableButton({super.key, required this.label, required this.onPressed});
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
@@ -19,7 +20,7 @@ class ReusableButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onPressed: () {},
+            onPressed: onPressed,
             child: Text(
               label,
               style: GoogleFonts.ubuntu(
