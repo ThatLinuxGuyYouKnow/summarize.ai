@@ -26,7 +26,7 @@ To run the app, follow these steps:
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/ThatLinuxGuyYouKnow/summarizer.ai
+    git clone https://github.com/ThatLinuxGuyYouKnow/summarize.ai
     cd aisummarizer
     ```
 
