@@ -1,86 +1,86 @@
 # AI Summarizer App
 
-## Overview
-The AI Summarizer App is a Flutter application designed to summarize articles using AI technology. Users can input the link to an article, and the app will provide a concise summary of the content.
+This repository contains the code for an AI-based summarizer application built using Flutter. The app allows users to input a link to an article, and it generates a summary using AI.
 
 ## Features
-- Input an article link to get a summary.
-- View the summarized content on a separate screen.
-- Visual indicators for loading states.
-- State management to handle summary availability.
 
-## Project Structure
-The project is structured into various components, each responsible for different functionalities within the app. Below is a breakdown of the key files and their roles:
+- Paste an article link to get a summary.
+- View the generated summary in a separate screen.
+- State management using the `Provider` package.
+- Custom reusable components for UI consistency.
 
-### Main Application Entry Point
-- **main.dart**
-  - Initializes the application and sets up the `SummaryNotifier` using `MultiProvider`.
-  - Loads environment variables using `flutter_dotenv`.
-  - Sets `SummarizerScreen` as the home screen of the app.
+## State Management
 
-### Screens
-- **summarizerScreen.dart**
-  - Main screen where users input the article link.
-  - Contains the logic to handle the summarization process, display loading indicators, and navigate to the summary screen.
+The app uses the `Provider` package for state management. The main state management class is `SummaryNotifier`, which is responsible for notifying listeners when a summary is available.
 
-- **summaryScreen.dart**
-  - Displays the summarized content of the article.
-  - Uses a `ReusableAppBar` for consistent UI.
+### Relevant Files
 
-### State Management
-- **summary_alert.dart**
-  - Defines the `SummaryNotifier` class, a `ChangeNotifier` that manages the state of summary availability.
-  - Methods include `alertSummaryIsAvailable` to notify listeners when a summary is ready.
+- **`lib/State Management/summary_alert.dart`**: Defines the `SummaryNotifier` class used for state management.
+- **`lib/summarizerScreen.dart`**: Main screen where users can input the article link and get the summary.
+- **`lib/summaryScreen.dart`**: Screen that displays the generated summary.
+- **`lib/main.dart`**: Entry point of the app where the `Provider` is set up.
 
-### AI Interactions
-- **gpt_functions.dart**
-  - Contains functions to interact with the AI model for summarizing articles.
-  - Uses a function `summarizeArticleSequence` to process the article URL and return the summary.
+## Running the App
 
-### Reusable Components
-- **button.dart**
-  - Defines a reusable button component used across different screens.
-  
-- **appBar.dart**
-  - Defines a reusable app bar component for consistent navigation.
-  
-- **resuableTextField.dart**
-  - Defines a reusable text field component for input fields.
+To run the app, follow these steps:
+
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/your-username/aisummarizer.git
+    cd aisummarizer
+    ```
+
+2. **Install dependencies**:
+    ```sh
+    flutter pub get
+    ```
+
+3. **Run the app**:
+    ```sh
+    flutter run
+    ```
+
+## App Structure
+
+The app is structured as follows:
+
+- **Reusable Components**:
+  - `lib/Reusbale Components/button.dart`: Custom button widget.
+  - `lib/Reusbale Components/appBar.dart`: Custom app bar widget.
+  - `lib/Reusbale Components/resuableTextField.dart`: Custom text field widget.
+
+- **Screens**:
+  - `lib/summarizerScreen.dart`: Main screen for inputting the article link and viewing the summary.
+  - `lib/summaryScreen.dart`: Screen for displaying the summary.
+
+- **State Management**:
+  - `lib/State Management/summary_alert.dart`: Contains the `SummaryNotifier` class.
+
+- **AI Interactions**:
+  - `lib/ai_interactions/gpt_functions.dart`: Functions for interacting with the AI to generate summaries.
 
 ## Technical Description
 
-### State Management
-State management in this app is handled using the `Provider` package, specifically with a `ChangeNotifier` class, `SummaryNotifier`. This notifier maintains the state of whether a summary is available or not. The state is updated and notified through the `alertSummaryIsAvailable` method.
+### `SummaryNotifier`
 
-- **summary_alert.dart**: Contains the `SummaryNotifier` class that extends `ChangeNotifier`.
-  - `summaryIsAvailable`: A boolean to track if a summary is ready.
-  - `alertSummaryIsAvailable`: Method to update `summaryIsAvailable` and notify listeners.
+The `SummaryNotifier` class extends `ChangeNotifier` and manages the state for whether a summary is available. It provides a method `alertSummaryIsAvailable` to update this state and notify listeners.
 
-In `main.dart`, the `SummaryNotifier` is provided at the root of the widget tree using `ChangeNotifierProvider`. This allows any widget in the tree to listen for changes and react accordingly, ensuring a reactive UI.
+### Main Screen (`SummarizerScreen`)
 
-### User Interface
-The user interface is built using Flutter widgets. The main screen (`SummarizerScreen`) includes:
-- An input field for the article link.
-- A button to trigger the summarization process.
-- A loading indicator while the summary is being generated.
-- A conditional button to navigate to the `SummaryScreen` if a summary is available.
+This screen allows users to input the article link and triggers the summarization process. It uses a `TextEditingController` to manage the input and a `Consumer<SummaryNotifier>` to react to state changes.
 
-### Navigation
-Navigation between screens is handled using Flutter's `Navigator` class. When the summarization process completes, and if the summary is available, the user can navigate to `SummaryScreen` to view the summary.
+### Summary Screen (`SummaryScreen`)
 
-## How to Run
-1. Clone the repository.
-2. Install the required dependencies using `flutter pub get`.
-3. Set up your `.env` file with necessary environment variables.
-4. Run the app using `flutter run`.
+This screen displays the summary text generated by the AI. It receives the summary text as a parameter and shows it in a scrollable view.
 
-## Dependencies
-- Flutter
-- Provider
-- Google Fonts
-- flutter_dotenv
+## Environment Setup
 
-## Conclusion
-This README provides a comprehensive overview of the AI Summarizer App, detailing the project structure, state management, user interface components, and navigation. For a deeper understanding, refer to the specific files mentioned above.
+Make sure to set up the environment file (`.env`) with the necessary configurations.
 
-**Note:** No code snippets are included in this README as per the given instructions.
+## Contribution
+
+Feel free to fork this repository and contribute by submitting a pull request. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the MIT License.
