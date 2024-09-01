@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:aisummarizer/State%20Mnagement/summary_alert.dart';
+import 'package:aisummarizer/State%20Management/summary_alert.dart';
 
 class GptFunctions {
   Future<String?> summarizeArticleSequence({
@@ -26,7 +26,7 @@ class GptFunctions {
               'Do not provide any unrequested text like `Ok`. Please give *only* a 5-7 bullet point summary of the content of the article in the following url: $articleUrlToSummarize',
         },
       ],
-      'web_access': true,
+      'web_access': true, // allow gpt browse so it can access the provided link
     });
 
     try {

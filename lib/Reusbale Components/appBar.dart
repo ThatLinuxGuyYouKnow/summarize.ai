@@ -6,18 +6,14 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
   ReusableAppBar(this.appBarTitle);
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       backgroundColor: Colors.purple,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(appBarTitle,
-              style: GoogleFonts.poppins(
-                  textStyle: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white)))
-        ],
-      ),
+      title: Text(appBarTitle,
+          style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white))),
     );
   }
 

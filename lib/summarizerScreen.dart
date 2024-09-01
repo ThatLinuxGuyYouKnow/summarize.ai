@@ -1,5 +1,5 @@
 import 'package:aisummarizer/Reusbale%20Components/button.dart';
-import 'package:aisummarizer/State%20Mnagement/summary_alert.dart';
+import 'package:aisummarizer/State%20Management/summary_alert.dart';
 import 'package:aisummarizer/ai_interactions/gpt_functions.dart';
 import 'package:aisummarizer/summaryScreen.dart';
 import 'package:flutter/material.dart';
