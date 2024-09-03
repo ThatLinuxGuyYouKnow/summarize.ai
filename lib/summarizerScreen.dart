@@ -1,4 +1,5 @@
 import 'package:aisummarizer/Reusbale%20Components/button.dart';
+import 'package:aisummarizer/Reusbale%20Components/summarizeButton.dart';
 import 'package:aisummarizer/State%20Management/summary_alert.dart';
 import 'package:aisummarizer/ai_interactions/gpt_functions.dart';
 import 'package:aisummarizer/summaryScreen.dart';
@@ -47,27 +48,27 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
               SizedBox(height: screenHeight * 0.01),
               ReusableTextField(
                 borderColor: Colors.purpleAccent,
-                height: screenHeight * 0.3,
+                height: screenHeight * 0.1,
                 controller: rawArticleLink,
               ),
-              SizedBox(height: screenHeight * 0.35),
-              ReusableButton(
-                label: 'Summarize',
-                onPressed: () async {
-                  print('button clicked!!!');
-                  setState(() {
-                    isLoading = true;
-                  });
-                  String? summary =
-                      await GptFunctions().summarizeArticleSequence(
-                    context: context,
-                    articleUrlToSummarize: rawArticleLink.text.trim(),
-                  );
-                  setState(() {
-                    summaryText = summary;
-                    isLoading = false;
-                  });
-                },
+              SizedBox(height: screenHeight * 0.05),
+              Row(
+                children: [
+                  SummarizeButton(onTapped: () async {
+                    setState(() {
+                      isLoading = true;
+                    });
+                    String? summary =
+                        await GptFunctions().summarizeArticleSequence(
+                      context: context,
+                      articleUrlToSummarize: rawArticleLink.text.trim(),
+                    );
+                    setState(() {
+                      summaryText = summary;
+                      isLoading = false;
+                    });
+                  }),
+                ],
               ),
               if (isLoading) const CircularProgressIndicator(),
               Consumer<SummaryNotifier>(

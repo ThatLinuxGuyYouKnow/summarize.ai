@@ -6,6 +6,7 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
   ReusableAppBar(this.appBarTitle);
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       centerTitle: true,
       backgroundColor: Colors.purple,
       title: Text(appBarTitle,
