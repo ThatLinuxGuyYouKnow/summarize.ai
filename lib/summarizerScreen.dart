@@ -27,7 +27,7 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double paddingWidth = screenWidth * .05;
     if (screenWidth >= 900) {
-      paddingWidth = screenWidth * 0.3;
+      paddingWidth = screenWidth * 0.4;
     }
     return Scaffold(
       appBar: ReusableAppBar('Summarize Articles'),
