@@ -28,9 +28,11 @@ class ReusableTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double width = screenWidth * .9;
+    if (screenWidth >= 900) {}
     return Container(
-      height: height ?? screenHeight * 0.08,
-      width: width ?? screenWidth * 0.9,
+      height: screenHeight * 0.08,
+      width: screenWidth * 0.9,
       padding: EdgeInsets.symmetric(horizontal: 10.0),
       decoration: BoxDecoration(
         border: Border.all(
