@@ -6,9 +6,13 @@ class SummarizeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double buttonWidth = screenWidth * .9;
+    if (screenWidth >= 90) {
+      buttonWidth = screenWidth * .1;
+    }
     return Container(
         height: screenHeight * 0.06,
-        width: screenWidth * 0.4,
+        width: buttonWidth,
         decoration: BoxDecoration(
             color: Colors.purple,
             borderRadius: BorderRadius.all(

@@ -9,7 +9,7 @@ class ReusableButton extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     double buttonWidth = screenWidth * .9;
-    if (screenWidth >= 900) {
+    if (screenWidth >= 90) {
       buttonWidth = screenWidth * .1;
     }
     return ClipRRect(
