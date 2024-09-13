@@ -8,12 +8,14 @@ class ReusableButton extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
-    if (screenWidth >= 900) {}
+    double buttonWidth = screenWidth * .9;
+    if (screenWidth >= 900) {
+      buttonWidth = screenWidth * .1;
+    }
     return ClipRRect(
         borderRadius: BorderRadius.circular(5),
         child: SizedBox(
-          width: screenWidth * 0.9,
+          width: buttonWidth,
           height: screenHeight * 0.077,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
