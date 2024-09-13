@@ -28,8 +28,12 @@ class ReusableTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     double containerWidth = screenWidth * 0.9;
-
+    double containerHeight = screenHeight * 2;
+    if (screenHeight >= 500) {
+      containerHeight = screenHeight * .1;
+    }
     if (screenWidth >= 900) {
       containerWidth = screenWidth * 0.3;
     }
