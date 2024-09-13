@@ -32,7 +32,7 @@ class ReusableTextField extends StatelessWidget {
     double containerWidth = screenWidth * 0.9;
     double containerHeight = screenHeight * 2;
     if (screenHeight >= 500) {
-      containerHeight = screenHeight * .1;
+      containerHeight = screenHeight * .25;
     }
     if (screenWidth >= 900) {
       containerWidth = screenWidth * 0.3;

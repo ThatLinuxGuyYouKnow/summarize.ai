@@ -26,8 +26,10 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     double paddingWidth = screenWidth * .05;
+    bool bigScreen = false;
     if (screenWidth >= 900) {
-      paddingWidth = screenWidth * 0.4;
+      paddingWidth = screenWidth * 0.2;
+      bigScreen = true;
     }
     return Scaffold(
       appBar: ReusableAppBar('Summarize Articles'),
@@ -38,6 +40,9 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
             children: [
               SizedBox(height: screenHeight * 0.035),
               Row(
+                mainAxisAlignment: bigScreen
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     'Paste the article link here',
