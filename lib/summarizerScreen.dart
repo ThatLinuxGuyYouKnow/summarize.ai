@@ -25,7 +25,7 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double paddingWidth = 0.5;
+    double paddingWidth = screenWidth * .05;
     if (screenWidth >= 900) {
       paddingWidth = screenWidth * 0.3;
     }
@@ -33,7 +33,7 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
       appBar: ReusableAppBar('Summarize Articles'),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * .05),
+          padding: EdgeInsets.symmetric(horizontal: paddingWidth),
           child: Column(
             children: [
               SizedBox(height: screenHeight * 0.035),
