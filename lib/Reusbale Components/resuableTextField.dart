@@ -7,8 +7,7 @@ class ReusableTextField extends StatelessWidget {
   final bool obscureText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
-  final double? height;
-  final double? width;
+
   final double? borderWidth;
   final Color? borderColor;
   final Function(String)? onChanged;
@@ -20,8 +19,6 @@ class ReusableTextField extends StatelessWidget {
     this.obscureText = false,
     this.prefixIcon,
     this.suffixIcon,
-    this.height,
-    this.width,
     this.borderWidth,
     this.borderColor,
     this.onChanged,

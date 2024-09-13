@@ -48,7 +48,6 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
               SizedBox(height: screenHeight * 0.01),
               ReusableTextField(
                 borderColor: Colors.purpleAccent,
-                height: screenHeight * 0.1,
                 controller: rawArticleLink,
               ),
               SizedBox(height: screenHeight * 0.05),
