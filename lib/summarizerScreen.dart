@@ -1,13 +1,12 @@
-import 'package:aisummarizer/Reusbale%20Components/button.dart';
-import 'package:aisummarizer/Reusbale%20Components/summarizeButton.dart';
-import 'package:aisummarizer/State%20Management/summary_alert.dart';
-import 'package:aisummarizer/ai_interactions/gpt_functions.dart';
-import 'package:aisummarizer/summaryScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'Reusbale Components/appBar.dart';
 import 'Reusbale Components/resuableTextField.dart';
+import 'Reusbale Components/summarizeButton.dart';
+import 'package:provider/provider.dart';
+import 'State Management/summary_alert.dart';
+import 'ai_interactions/gpt_functions.dart';
+import 'summaryScreen.dart';
 
 class SummarizerScreen extends StatefulWidget {
   SummarizerScreen({super.key});
@@ -25,12 +24,21 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double paddingWidth = screenWidth * .05;
+
+    // Set padding width based on screen size
+    double paddingWidth;
     bool bigScreen = false;
-    if (screenWidth >= 900) {
-      paddingWidth = screenWidth * 0.2;
+
+    if (screenWidth >= 1200) {
+      paddingWidth = screenWidth * 0.4; // Full desktop view
       bigScreen = true;
+    } else if (screenWidth >= 900) {
+      paddingWidth = screenWidth * 0.2; // Medium tablet/laptop view
+      bigScreen = true;
+    } else {
+      paddingWidth = screenWidth * 0.05; // Mobile view
     }
+
     return Scaffold(
       appBar: ReusableAppBar('Summarize Articles'),
       body: SingleChildScrollView(
@@ -47,7 +55,8 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
                   Text(
                     'Paste the article link here',
                     style: GoogleFonts.ubuntu(
-                        textStyle: const TextStyle(fontSize: 15)),
+                      textStyle: const TextStyle(fontSize: 15),
+                    ),
                   ),
                   SizedBox(width: screenWidth * 0.001),
                   const Icon(Icons.paste),
@@ -61,20 +70,22 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
               SizedBox(height: screenHeight * 0.05),
               Row(
                 children: [
-                  SummarizeButton(onTapped: () async {
-                    setState(() {
-                      isLoading = true;
-                    });
-                    String? summary =
-                        await GptFunctions().summarizeArticleSequence(
-                      context: context,
-                      articleUrlToSummarize: rawArticleLink.text.trim(),
-                    );
-                    setState(() {
-                      summaryText = summary;
-                      isLoading = false;
-                    });
-                  }),
+                  SummarizeButton(
+                    onTapped: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      String? summary =
+                          await GptFunctions().summarizeArticleSequence(
+                        context: context,
+                        articleUrlToSummarize: rawArticleLink.text.trim(),
+                      );
+                      setState(() {
+                        summaryText = summary;
+                        isLoading = false;
+                      });
+                    },
+                  ),
                 ],
               ),
               if (isLoading) const CircularProgressIndicator(),
@@ -92,7 +103,7 @@ class _SummarizerScreenState extends State<SummarizerScreen> {
                           ),
                         );
                       },
-                      child: Text('View Summary'),
+                      child: const Text('View Summary'),
                     );
                   } else {
                     return Container();
